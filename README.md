@@ -1,16 +1,43 @@
-# React + Vite
+# Prompt Engineering Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive demo app for learning prompt engineering with real Claude API calls — side-by-side prompt comparisons, structured JSON extraction, and copy-paste API patterns.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Get an API key
 
-## React Compiler
+This project uses [OpenRouter](https://openrouter.ai) to call Claude models. OpenRouter gives you a single key to access Claude and many other models.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Go to [openrouter.ai](https://openrouter.ai) and create a free account
+2. Navigate to **Keys** and generate a new API key
 
-## Expanding the ESLint configuration
+### 2. Add your key
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Create a `.env.local` file in the project root (this file is git-ignored and will never be committed):
+
+```
+VITE_OPENROUTER_API_KEY=your-key-here
+```
+
+### 3. Install and run
+
+```bash
+nvm use 22       # requires Node 22+
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Tabs
+
+| Tab | What it shows |
+|-----|---------------|
+| Prompt Patterns | Same task, bad vs engineered prompt — run both side by side |
+| Structured Output | Paste any text, get back clean JSON (meeting notes, bug reports, leads) |
+| API Patterns | 4 production patterns with live runnable examples |
+
+## Notes
+
+- API calls are proxied through Vite's dev server — your key is never exposed in the browser
+- `.env.local` is covered by `.gitignore` (`*.local`) — do not rename it to `.env`
